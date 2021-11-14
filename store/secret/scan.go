@@ -10,8 +10,6 @@ import (
 	"github.com/drone/drone/core"
 	"github.com/drone/drone/store/shared/db"
 	"github.com/drone/drone/store/shared/encrypt"
-
-	"fmt"
 )
 
 // helper function converts the User structure to a set
@@ -67,8 +65,6 @@ func scanRows(encrypt encrypt.Encrypter, rows *sql.Rows) ([]*core.Secret, error)
 			return nil, err
 		}
 		secrets = append(secrets, sec)
-		fmt.Println(sec)
-
 	}
 	return secrets, nil
 }
