@@ -12,14 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// +build oss
+//go:build !oss
+// +build !oss
 
 package collabs
 
 import (
 	"net/http"
 
-	"github.com/drone/drone/core"
 	"github.com/drone/drone/handler/api/render"
 )
 
@@ -27,7 +27,7 @@ var notImplemented = func(w http.ResponseWriter, r *http.Request) {
 	render.NotImplemented(w, render.ErrNotImplemented)
 }
 
-func HandleDelete(core.UserStore, core.RepositoryStore, core.PermStore) http.HandlerFunc {
+/*func HandleDelete(core.UserStore, core.RepositoryStore, core.PermStore) http.HandlerFunc {
 	return notImplemented
 }
 
@@ -37,4 +37,4 @@ func HandleFind(core.UserStore, core.RepositoryStore, core.PermStore) http.Handl
 
 func HandleList(core.RepositoryStore, core.PermStore) http.HandlerFunc {
 	return notImplemented
-}
+}*/

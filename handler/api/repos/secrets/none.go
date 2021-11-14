@@ -12,14 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// +build oss
+//go:build !oss
 
 package secrets
 
 import (
 	"net/http"
 
-	"github.com/drone/drone/core"
 	"github.com/drone/drone/handler/api/render"
 )
 
@@ -27,7 +26,7 @@ var notImplemented = func(w http.ResponseWriter, r *http.Request) {
 	render.NotImplemented(w, render.ErrNotImplemented)
 }
 
-func HandleCreate(core.RepositoryStore, core.SecretStore) http.HandlerFunc {
+/*func HandleCreate(core.RepositoryStore, core.SecretStore) http.HandlerFunc {
 	return notImplemented
 }
 
@@ -45,4 +44,4 @@ func HandleFind(core.RepositoryStore, core.SecretStore) http.HandlerFunc {
 
 func HandleList(core.RepositoryStore, core.SecretStore) http.HandlerFunc {
 	return notImplemented
-}
+}*/

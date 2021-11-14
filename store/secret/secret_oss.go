@@ -12,20 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// +build oss
+//go:build !oss
+// +build !oss
 
 package secret
 
-import (
-	"context"
-
-	"github.com/drone/drone/core"
-	"github.com/drone/drone/store/shared/db"
-	"github.com/drone/drone/store/shared/encrypt"
-)
-
 // New returns a new Secret database store.
-func New(db *db.DB, enc encrypt.Encrypter) core.SecretStore {
+/*func New(db *db.DB, enc encrypt.Encrypter) core.SecretStore {
 	return new(noop)
 }
 
@@ -53,4 +46,4 @@ func (noop) Update(context.Context, *core.Secret) error {
 
 func (noop) Delete(context.Context, *core.Secret) error {
 	return nil
-}
+}*/

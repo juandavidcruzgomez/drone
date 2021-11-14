@@ -12,14 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// +build oss
+//go:build !oss
+// +build !oss
 
 package crons
 
 import (
 	"net/http"
 
-	"github.com/drone/drone/core"
 	"github.com/drone/drone/handler/api/render"
 )
 
@@ -27,7 +27,7 @@ var notImplemented = func(w http.ResponseWriter, r *http.Request) {
 	render.NotImplemented(w, render.ErrNotImplemented)
 }
 
-func HandleCreate(core.RepositoryStore, core.CronStore) http.HandlerFunc {
+/*func HandleCreate(core.RepositoryStore, core.CronStore) http.HandlerFunc {
 	return notImplemented
 }
 
@@ -50,4 +50,4 @@ func HandleList(core.RepositoryStore, core.CronStore) http.HandlerFunc {
 func HandleExec(core.UserStore, core.RepositoryStore, core.CronStore,
 	core.CommitService, core.Triggerer) http.HandlerFunc {
 	return notImplemented
-}
+}*/

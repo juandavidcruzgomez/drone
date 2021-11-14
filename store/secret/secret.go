@@ -2,8 +2,6 @@
 // Use of this source code is governed by the Drone Non-Commercial License
 // that can be found in the LICENSE file.
 
-// +build !oss
-
 package secret
 
 import (
@@ -12,6 +10,8 @@ import (
 	"github.com/drone/drone/core"
 	"github.com/drone/drone/store/shared/db"
 	"github.com/drone/drone/store/shared/encrypt"
+
+	"github.com/sirupsen/logrus"
 )
 
 // New returns a new Secret database store.
@@ -42,6 +42,7 @@ func (s *secretStore) List(ctx context.Context, id int64) ([]*core.Secret, error
 		out, err = scanRows(s.enc, rows)
 		return err
 	})
+	logrus.WithField("out", out[0].Namespace).Infoln("What?")
 	return out, err
 }
 
