@@ -1,7 +1,6 @@
 # [Drone](https://www.drone.io/) <img src="https://github.com/drone/brand/blob/master/screenshots/screenshot_build_success.png" style="max-width:100px;" />
 **Welcome to the Drone codebase, we are thrilled to have you here!** 
 
-
 ## What is Drone?
 Drone is a continuous delivery system built on container technology. Drone uses a simple YAML build file, to define and execute build pipelines inside Docker containers. 
  
@@ -9,7 +8,7 @@ Drone is a continuous delivery system built on container technology. Drone uses 
 
 - [What is Drone?](#what-is-drone)
 - [Table of Contents](#table-of-contents)
-- [Community](#community)
+- [Community and Support](#community-and-support)
 - [Contributing](#contributing)
 - [Code of Conduct](#code-of-conduct)
 - [Setup Documentation](#setup-documentation)
@@ -18,13 +17,18 @@ Drone is a continuous delivery system built on container technology. Drone uses 
 - [Plugin Index](#plugin-index)
 - [Documentation and Other Links](#documentation-and-Other-Links)
 
-## Community
-
-You can visit us at [Discourse](https://discourse.drone.io/) as well as our [Slack](https://join.slack.com/t/harnesscommunity/shared_invite/zt-90wb0w6u-OATJvUBkSDR3W9oYX7D~4A).
+## Community and Support
+[Harness Community Slack](https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw) - Join the #drone slack channel to connect with our engineers and other users running Drone CI.
+</br>
+[Harness Community Forum](https://community.harness.io/) - Ask questions, find answers, and help other users.
+</br>
+[Report A Bug](https://community.harness.io/c/bugs/17) - Find a bug? Please report in our forum under Drone Bugs. Please provide screenshots and steps to reproduce. 
+</br>
+[Events](https://www.meetup.com/harness/) - Keep up to date with Drone events and check out previous events [here](https://www.youtube.com/watch?v=Oq34ImUGcHA&list=PLXsYHFsLmqf3zwelQDAKoVNmLeqcVsD9o).
 
 ## Contributing
 
-We encourage you to contribute to Drone! whether thats joining in on the community slack or discourse, or contributing pull requests / documentation changes or raising issues.
+We encourage you to contribute to Drone! Whether that's joining in on the community slack or discourse, or contributing pull requests / documentation changes or raising issues.
 
 ## Code of Conduct
 
@@ -46,7 +50,7 @@ Plugins are used in build steps to perform actions, eg send a message to slack o
 
 This build file contains a single pipeline (you can have multiple pipelines too) that builds a go application. The front end with npm. Publishes the docker container to a registry and announces the results to a slack room.
 
-```yaml
+```YAML
 name: default
 
 kind: pipeline
@@ -103,14 +107,14 @@ docker run -it --rm -v "$(pwd)":/usr/local/src/your-app githubchangeloggenerator
 
 You can generate a token by logging into your GitHub account and going to Settings -> Personal access tokens.
 
-Next we tag the PR's with the fixes or enhancements labels. If the PR does not fufil the requirements, do not add a label.
+Next we tag the PR's with the fixes or enhancements labels. If the PR does not fulfill the requirements, do not add a label.
 
 **Before moving on make sure to update the version file `version/version.go && version/version_test.go`.**
 
 Run the changelog generator again with the future version according to semver.
 
 ```BASH
-docker run -it --rm -v "$(pwd)":/usr/local/src/your-app githubchangeloggenerator/github-changelog-generator -u drone -p drone -t <secret token> --future-release v1.0.0
+docker run -it --rm -v "$(pwd)":/usr/local/src/your-app githubchangeloggenerator/github-changelog-generator -u harness -p drone -t <secret token> --future-release v1.0.0
 ```
 
 Create your pull request for the release. Get it merged then tag the release.

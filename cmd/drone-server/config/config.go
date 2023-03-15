@@ -30,7 +30,7 @@ import (
 // IMPORTANT please do not add new configuration parameters unless it has
 // been discussed on the mailing list. We are attempting to reduce the
 // number of configuration parameters, and may reject pull requests that
-// introduce new parameters. (mailing list https://discourse.drone.io)
+// introduce new parameters. (mailing list https://community.harness.io)
 
 // default runner hostname.
 var hostname string
@@ -86,6 +86,7 @@ type (
 		GitLab    GitLab
 		Gogs      Gogs
 		Stash     Stash
+		Gitee     Gitee
 	}
 
 	// Cloning provides the cloning configuration.
@@ -147,6 +148,7 @@ type (
 	Starlark struct {
 		Enabled   bool   `envconfig:"DRONE_STARLARK_ENABLED"`
 		StepLimit uint64 `envconfig:"DRONE_STARLARK_STEP_LIMIT"`
+		SizeLimit uint64 `envconfig:"DRONE_STARLARK_SIZE_LIMIT" default:"0"`
 	}
 
 	// License provides license configuration
@@ -319,6 +321,10 @@ type (
 		SkipVerify bool          `envconfig:"DRONE_CONVERT_PLUGIN_SKIP_VERIFY"`
 		CacheSize  int           `envconfig:"DRONE_CONVERT_PLUGIN_CACHE_SIZE" default:"10"`
 		Timeout    time.Duration `envconfig:"DRONE_CONVERT_TIMEOUT" default:"1m"`
+
+		// this flag can be removed once we solve for
+		// https://github.com/harness/drone/pull/2994#issuecomment-795955312
+		Multi bool `envconfig:"DRONE_CONVERT_MULTI"`
 	}
 
 	// Validate provides the validation webhook configuration.
@@ -361,6 +367,18 @@ type (
 		Scope        []string `envconfig:"DRONE_GITHUB_SCOPE" default:"repo,repo:status,user:email,read:org"`
 		RateLimit    int      `envconfig:"DRONE_GITHUB_USER_RATELIMIT"`
 		Debug        bool     `envconfig:"DRONE_GITHUB_DEBUG"`
+	}
+
+	// Gitee providers the gitee client configuration.
+	Gitee struct {
+		Server       string   `envconfig:"DRONE_GITEE_SERVER" default:"https://gitee.com"`
+		APIServer    string   `envconfig:"DRONE_GITEE_API_SERVER" default:"https://gitee.com/api/v5"`
+		ClientID     string   `envconfig:"DRONE_GITEE_CLIENT_ID"`
+		ClientSecret string   `envconfig:"DRONE_GITEE_CLIENT_SECRET"`
+		RedirectURL  string   `envconfig:"DRONE_GITEE_REDIRECT_URL"`
+		SkipVerify   bool     `envconfig:"DRONE_GITEE_SKIP_VERIFY"`
+		Scope        []string `envconfig:"DRONE_GITEE_SCOPE" default:"user_info,projects,pull_requests,hook"`
+		Debug        bool     `envconfig:"DRONE_GITEE_DEBUG"`
 	}
 
 	// GitLab provides the gitlab client configuration.
@@ -476,6 +494,12 @@ func (c *Config) IsGitea() bool {
 	return c.Gitea.Server != ""
 }
 
+// IsGitee returns true if the Gitee integration
+// is activated.
+func (c *Config) IsGitee() bool {
+	return c.Gitee.ClientID != ""
+}
+
 // IsBitbucket returns true if the Bitbucket Cloud
 // integration is activated.
 func (c *Config) IsBitbucket() bool {
@@ -558,7 +582,7 @@ func configureGithub(c *Config) {
 
 func kubernetesServiceConflict(c *Config) error {
 	if strings.HasPrefix(c.Server.Port, "tcp://") {
-		return errors.New("Invalid port configuration. See https://discourse.drone.io/t/drone-server-changing-ports-protocol/4144")
+		return errors.New("Invalid port configuration. See https://community.harness.io/t/drone-server-changing-ports-protocol/11400")
 	}
 	return nil
 }

@@ -1,118 +1,386 @@
 # Changelog
 
-## [v2.4.0](https://github.com/drone/drone/tree/v2.4.0) (2021-09-23)
+## [2.16.0](https://github.com/harness/drone/tree/2.16.0) (2022-12-15)
 
-[Full Changelog](https://github.com/drone/drone/compare/v2.3.1...v2.4.0)
+[Full Changelog](https://github.com/harness/drone/compare/v2.15.0...2.16.0)
 
 **Implemented enhancements:**
 
-- bump ui version to v2.3.0 [\#3146](https://github.com/drone/drone/pull/3146) ([d1wilko](https://github.com/d1wilko))
-- verify if the application is buildable [\#3144](https://github.com/drone/drone/pull/3144) ([marko-gacesa](https://github.com/marko-gacesa))
+- Make Starlark file size limit configurable [\#3291](https://github.com/harness/drone/pull/3291) ([andrii-kasparevych](https://github.com/andrii-kasparevych))
+- Enhance status check label for promotions [\#3263](https://github.com/harness/drone/pull/3263) ([michelangelomo](https://github.com/michelangelomo))
 
 **Fixed bugs:**
 
-- fixes build issue with bitbucket cloud [\#3147](https://github.com/drone/drone/pull/3147) ([eoinmcafee00](https://github.com/eoinmcafee00))
-- Fix stepLimit param in Starlark and Template OSS code [\#3141](https://github.com/drone/drone/pull/3141) ([phil-davis](https://github.com/phil-davis))
-- fix a broken link in readme [\#3140](https://github.com/drone/drone/pull/3140) ([empire](https://github.com/empire))
+- \(bugfix\) bump go-scm to v1.28.0 [\#3290](https://github.com/harness/drone/pull/3290) ([tphoney](https://github.com/tphoney))
 
-**Merged pull requests:**
+## [v2.15.0](https://github.com/harness/drone/tree/v2.15.0) (2022-10-28)
 
-- Allow jsonnet imports in pipeline configuration [\#3105](https://github.com/drone/drone/pull/3105) ([hhamalai](https://github.com/hhamalai))
-
-## [v2.3.1](https://github.com/drone/drone/tree/v2.3.1) (2021-09-09)
-
-[Full Changelog](https://github.com/drone/drone/compare/v2.3.0...v2.3.1)
+[Full Changelog](https://github.com/harness/drone/compare/v2.14.0...v2.15.0)
 
 **Implemented enhancements:**
 
-- bump ui to v2.2.1 - https://github.com/drone/drone-ui/blob/main/CHANGELOG.md [\#3138](https://github.com/drone/drone/pull/3138) ([d1wilko](https://github.com/d1wilko))
+- bump ui version [\#3279](https://github.com/harness/drone/pull/3279) ([d1wilko](https://github.com/d1wilko))
+- Add endpoint for allowing admins to force rotate a user's token [\#3272](https://github.com/harness/drone/pull/3272) ([ShiftedMr](https://github.com/ShiftedMr))
 
 **Merged pull requests:**
 
-- \(maint\)-release 2.3.1 [\#3139](https://github.com/drone/drone/pull/3139) ([d1wilko](https://github.com/d1wilko))
+- release prep v2.15.0 [\#3281](https://github.com/harness/drone/pull/3281) ([d1wilko](https://github.com/d1wilko))
 
-## [v2.3.0](https://github.com/drone/drone/tree/v2.3.0) (2021-09-09)
+## [v2.14.0](https://github.com/harness/drone/tree/v2.14.0) (2022-10-18)
 
-[Full Changelog](https://github.com/drone/drone/compare/v2.2.0...v2.3.0)
+[Full Changelog](https://github.com/harness/drone/compare/v2.13.0...v2.14.0)
 
 **Implemented enhancements:**
 
-- bump ui to v2.2.0 - https://github.com/drone/drone-ui/blob/main/CHANGELOG.md [\#3137](https://github.com/drone/drone/pull/3137) ([d1wilko](https://github.com/d1wilko))
-- Make starlark step limit configurable [\#3134](https://github.com/drone/drone/pull/3134) ([phil-davis](https://github.com/phil-davis))
-- \(feat\) drone h/a: wrapped scheduler's signal func with redis mutex [\#3130](https://github.com/drone/drone/pull/3130) ([marko-gacesa](https://github.com/marko-gacesa))
+- \(DRON-418\) send webhook and set status for failed builds [\#3266](https://github.com/harness/drone/pull/3266) ([tphoney](https://github.com/tphoney))
+
+**Merged pull requests:**
+
+- v2.14.0 release prep [\#3275](https://github.com/harness/drone/pull/3275) ([d1wilko](https://github.com/d1wilko))
+
+## [v2.13.0](https://github.com/harness/drone/tree/v2.13.0) (2022-09-21)
+
+[Full Changelog](https://github.com/harness/drone/compare/v2.12.1...v2.13.0)
+
+**Implemented enhancements:**
+
+- feat: update drone-yaml module [\#3249](https://github.com/harness/drone/pull/3249) ([jimsheldon](https://github.com/jimsheldon))
+- support time zone [\#3241](https://github.com/harness/drone/pull/3241) ([zc2638](https://github.com/zc2638))
 
 **Fixed bugs:**
 
-- \(fix\) trim http/s prefixes from config hostnames [\#3136](https://github.com/drone/drone/pull/3136) ([tphoney](https://github.com/tphoney))
-- \(fix\) remove unused jwt-go library [\#3129](https://github.com/drone/drone/pull/3129) ([tphoney](https://github.com/tphoney))
+- update discourse.drone.io to community.harness.io [\#3261](https://github.com/harness/drone/pull/3261) ([kit101](https://github.com/kit101))
+- \(DRON-392\) cascade deletes on purge [\#3243](https://github.com/harness/drone/pull/3243) ([tphoney](https://github.com/tphoney))
+- Template converter, don't skip .yaml extension. [\#3242](https://github.com/harness/drone/pull/3242) ([staffanselander](https://github.com/staffanselander))
 
-## [v2.2.0](https://github.com/drone/drone/tree/v2.2.0) (2021-09-01)
+**Merged pull requests:**
 
-[Full Changelog](https://github.com/drone/drone/compare/v2.1.0...v2.2.0)
+- v2.13.0 release prep [\#3268](https://github.com/harness/drone/pull/3268) ([tphoney](https://github.com/tphoney))
+- \(maint\) disable arm builds [\#3262](https://github.com/harness/drone/pull/3262) ([tphoney](https://github.com/tphoney))
+- Update links to discourse in issue template [\#3233](https://github.com/harness/drone/pull/3233) ([alikhil](https://github.com/alikhil))
 
-**Implemented enhancements:**
+## [v2.12.1](https://github.com/harness/drone/tree/v2.12.1) (2022-06-15)
 
-- \(maint\) ui version v2.1.0 - https://github.com/drone/drone-ui/blob/main/CHANGELOG.md [\#3132](https://github.com/drone/drone/pull/3132) ([d1wilko](https://github.com/d1wilko))
-- Ability to cancel running builds, if a new commit is pushed [\#3126](https://github.com/drone/drone/pull/3126) ([eoinmcafee00](https://github.com/eoinmcafee00))
+[Full Changelog](https://github.com/harness/drone/compare/v2.12.0...v2.12.1)
 
 **Fixed bugs:**
 
-- fix templating reg expression to match if .drone.yml contains --- characters  [\#3131](https://github.com/drone/drone/pull/3131) ([eoinmcafee00](https://github.com/eoinmcafee00))
-- add check on template extension type - throw error if invalid [\#3128](https://github.com/drone/drone/pull/3128) ([eoinmcafee00](https://github.com/eoinmcafee00))
+- \(bug\) - fix original template scripts & remove amend scripts [\#3229](https://github.com/harness/drone/pull/3229) ([eoinmcafee00](https://github.com/eoinmcafee00))
+- \(bug\) - remove unique index on template name [\#3226](https://github.com/harness/drone/pull/3226) ([eoinmcafee00](https://github.com/eoinmcafee00))
+- Added OAuth2 token refresher for Gitlab [\#3215](https://github.com/harness/drone/pull/3215) ([EndymionWight](https://github.com/EndymionWight))
 
 **Merged pull requests:**
 
-- \(maint\)-release 2.2.0 [\#3133](https://github.com/drone/drone/pull/3133) ([eoinmcafee00](https://github.com/eoinmcafee00))
-- Rename files with camelCase name to use snake\_case convention [\#3127](https://github.com/drone/drone/pull/3127) ([marko-gacesa](https://github.com/marko-gacesa))
-- event-stream supports timeout [\#3125](https://github.com/drone/drone/pull/3125) ([zc2638](https://github.com/zc2638))
-- \(maint\) Readme update Add Contributor Section  [\#3111](https://github.com/drone/drone/pull/3111) ([mrsantons](https://github.com/mrsantons))
+- release prep for v2.12.1 [\#3232](https://github.com/harness/drone/pull/3232) ([eoinmcafee00](https://github.com/eoinmcafee00))
+- \(maint\) fix starlark test on windows [\#3230](https://github.com/harness/drone/pull/3230) ([tphoney](https://github.com/tphoney))
+- \(maint\) fix unit tests so they pass on windows [\#3228](https://github.com/harness/drone/pull/3228) ([tphoney](https://github.com/tphoney))
+- Update Readme to Fix Typo [\#3223](https://github.com/harness/drone/pull/3223) ([hrittikhere](https://github.com/hrittikhere))
+- \(bug\) add unit test for comments in template file [\#3221](https://github.com/harness/drone/pull/3221) ([eoinmcafee00](https://github.com/eoinmcafee00))
+- Bump scm version to v1.24.0 [\#3219](https://github.com/harness/drone/pull/3219) ([kit101](https://github.com/kit101))
 
-## [v2.1.0](https://github.com/drone/drone/tree/v2.1.0) (2021-08-24)
+## [v2.12.0](https://github.com/harness/drone/tree/v2.12.0) (2022-05-16)
 
-[Full Changelog](https://github.com/drone/drone/compare/v2.0.6...v2.1.0)
+[Full Changelog](https://github.com/harness/drone/compare/v2.11.1...v2.12.0)
 
 **Implemented enhancements:**
 
-- \(maint\) ui version v2.0.1. - https://github.com/drone/drone-ui/blob/main/CHANGELOG.md [\#3123](https://github.com/drone/drone/pull/3123) ([d1wilko](https://github.com/d1wilko))
-- add support for yaml templates [\#3120](https://github.com/drone/drone/pull/3120) ([eoinmcafee00](https://github.com/eoinmcafee00))
+- bump SCM version to v1.21.1 [\#3204](https://github.com/harness/drone/pull/3204) ([d1wilko](https://github.com/d1wilko))
+- bump ui version [\#3202](https://github.com/harness/drone/pull/3202) ([d1wilko](https://github.com/d1wilko))
 
 **Fixed bugs:**
 
-- Update error message to forbidden if user membership doesn't exist on repo [\#3122](https://github.com/drone/drone/pull/3122) ([eoinmcafee00](https://github.com/eoinmcafee00))
-- update create template path to have namespace, instead of inside the payload [\#3121](https://github.com/drone/drone/pull/3121) ([eoinmcafee00](https://github.com/eoinmcafee00))
-- update dependency drone/go-scm to 1.15.2 to fix gitea build problem [\#3118](https://github.com/drone/drone/pull/3118) ([sesky4](https://github.com/sesky4))
+- \(fix\) update drone ui to 2.8.2 [\#3211](https://github.com/harness/drone/pull/3211) ([tphoney](https://github.com/tphoney))
+- \(dron-267\) correctly set parent for promotion retry [\#3210](https://github.com/harness/drone/pull/3210) ([tphoney](https://github.com/tphoney))
 
 **Merged pull requests:**
 
-- \(maint\) v2.1.0 release prep [\#3124](https://github.com/drone/drone/pull/3124) ([d1wilko](https://github.com/d1wilko))
+- release prep v2.12.0 [\#3214](https://github.com/harness/drone/pull/3214) ([tphoney](https://github.com/tphoney))
+- fixing URL [\#3208](https://github.com/harness/drone/pull/3208) ([dnielsen](https://github.com/dnielsen))
+- update community information with updated links [\#3199](https://github.com/harness/drone/pull/3199) ([mrsantons](https://github.com/mrsantons))
 
-## [v2.0.6](https://github.com/drone/drone/tree/v2.0.6) (2021-08-17)
+## [v2.11.1](https://github.com/harness/drone/tree/v2.11.1) (2022-03-15)
 
-[Full Changelog](https://github.com/drone/drone/compare/v2.0.5...v2.0.6)
+[Full Changelog](https://github.com/harness/drone/compare/v2.11.0...v2.11.1)
+
+**Fixed bugs:**
+
+- ignore nil repos in list and add better debugging [\#3196](https://github.com/harness/drone/pull/3196) ([d1wilko](https://github.com/d1wilko))
 
 **Merged pull requests:**
 
-- \(maint\) v2.0.6 release prep [\#3119](https://github.com/drone/drone/pull/3119) ([tphoney](https://github.com/tphoney))
+- \(maint\) release prep for 2.11.1 [\#3197](https://github.com/harness/drone/pull/3197) ([d1wilko](https://github.com/d1wilko))
 
-## [v2.0.5](https://github.com/drone/drone/tree/v2.0.5) (2021-08-17)
+## [v2.11.0](https://github.com/harness/drone/tree/v2.11.0) (2022-03-08)
 
-[Full Changelog](https://github.com/drone/drone/compare/v2.0.4...v2.0.5)
+[Full Changelog](https://github.com/harness/drone/compare/v2.10.0...v2.11.0)
 
 **Implemented enhancements:**
 
-- bump ui version [\#3115](https://github.com/drone/drone/pull/3115) ([d1wilko](https://github.com/d1wilko))
-- bump ui version [\#3114](https://github.com/drone/drone/pull/3114) ([d1wilko](https://github.com/d1wilko))
-- Add support for nested data objects within templates [\#3110](https://github.com/drone/drone/pull/3110) ([eoinmcafee00](https://github.com/eoinmcafee00))
-- \(feat\) redis implementation for pub-sub, log streaming and canceller [\#3108](https://github.com/drone/drone/pull/3108) ([marko-gacesa](https://github.com/marko-gacesa))
-
-**Fixed bugs:**
-
-- fix issue where map changes order therefore test randomly fails [\#3112](https://github.com/drone/drone/pull/3112) ([eoinmcafee00](https://github.com/eoinmcafee00))
+- bump UI and SCM versions [\#3193](https://github.com/harness/drone/pull/3193) ([d1wilko](https://github.com/d1wilko))
 
 **Merged pull requests:**
 
-- release 2.0.5 [\#3117](https://github.com/drone/drone/pull/3117) ([eoinmcafee00](https://github.com/eoinmcafee00))
-- Update pull\_request\_template.md [\#3107](https://github.com/drone/drone/pull/3107) ([tphoney](https://github.com/tphoney))
+- \(maint\) release prep for 2.11.0 [\#3194](https://github.com/harness/drone/pull/3194) ([d1wilko](https://github.com/d1wilko))
+
+## [v2.10.0](https://github.com/harness/drone/tree/v2.10.0) (2022-03-03)
+
+[Full Changelog](https://github.com/harness/drone/compare/v2.9.1...v2.10.0)
+
+**Implemented enhancements:**
+
+- bump UI version to v2.7.0 [\#3190](https://github.com/harness/drone/pull/3190) ([d1wilko](https://github.com/d1wilko))
+- bump UI version to v2.6.2 [\#3188](https://github.com/harness/drone/pull/3188) ([d1wilko](https://github.com/d1wilko))
+
+**Merged pull requests:**
+
+- \(maint\) release prep for 2.10.0 [\#3191](https://github.com/harness/drone/pull/3191) ([d1wilko](https://github.com/d1wilko))
+
+## [v2.9.1](https://github.com/harness/drone/tree/v2.9.1) (2022-01-27)
+
+[Full Changelog](https://github.com/harness/drone/compare/v2.9.0...v2.9.1)
+
+**Fixed bugs:**
+
+- bump ui version 2.6.1 [\#3185](https://github.com/harness/drone/pull/3185) ([d1wilko](https://github.com/d1wilko))
+
+**Merged pull requests:**
+
+- \(maint\) release prep for 2.9.1 [\#3186](https://github.com/harness/drone/pull/3186) ([tphoney](https://github.com/tphoney))
+
+## [v2.9.0](https://github.com/harness/drone/tree/v2.9.0) (2022-01-26)
+
+[Full Changelog](https://github.com/harness/drone/compare/v2.8.0...v2.9.0)
+
+**Implemented enhancements:**
+
+- bump ui to v2.6.0 [\#3183](https://github.com/harness/drone/pull/3183) ([eoinmcafee00](https://github.com/eoinmcafee00))
+
+**Merged pull requests:**
+
+- release prep for v2.9.0 [\#3184](https://github.com/harness/drone/pull/3184) ([eoinmcafee00](https://github.com/eoinmcafee00))
+
+## [v2.8.0](https://github.com/harness/drone/tree/v2.8.0) (2022-01-11)
+
+[Full Changelog](https://github.com/harness/drone/compare/v2.7.3...v2.8.0)
+
+**Implemented enhancements:**
+
+- bump UI to v2.5.0 [\#3180](https://github.com/harness/drone/pull/3180) ([eoinmcafee00](https://github.com/eoinmcafee00))
+- \(feat\) ignore archive repos on sync [\#3178](https://github.com/harness/drone/pull/3178) ([eoinmcafee00](https://github.com/eoinmcafee00))
+- Datadog add the tag of 'remote:gitee' [\#3174](https://github.com/harness/drone/pull/3174) ([kit101](https://github.com/kit101))
+- Add tag filter when call build list endpoint [\#3173](https://github.com/harness/drone/pull/3173) ([michelangelomo](https://github.com/michelangelomo))
+
+**Fixed bugs:**
+
+- \(maint\) add warning around typo for stage\_id in step struct [\#3179](https://github.com/harness/drone/pull/3179) ([tphoney](https://github.com/tphoney))
+
+**Merged pull requests:**
+
+- release prep v2.8.0 [\#3181](https://github.com/harness/drone/pull/3181) ([eoinmcafee00](https://github.com/eoinmcafee00))
+
+## [v2.7.3](https://github.com/harness/drone/tree/v2.7.3) (2021-12-30)
+
+[Full Changelog](https://github.com/harness/drone/compare/v2.7.2...v2.7.3)
+
+**Fixed bugs:**
+
+- bump go-scm to v1.16.3 [\#3175](https://github.com/harness/drone/pull/3175) ([eoinmcafee00](https://github.com/eoinmcafee00))
+
+**Merged pull requests:**
+
+- release prep v2.7.3 [\#3176](https://github.com/harness/drone/pull/3176) ([eoinmcafee00](https://github.com/eoinmcafee00))
+
+## [v2.7.2](https://github.com/harness/drone/tree/v2.7.2) (2021-12-19)
+
+[Full Changelog](https://github.com/harness/drone/compare/v2.7.1...v2.7.2)
+
+**Implemented enhancements:**
+
+- bump go-scm to v1.16.2 [\#3169](https://github.com/harness/drone/pull/3169) ([kit101](https://github.com/kit101))
+
+**Fixed bugs:**
+
+- fixbug gitee provide refresher [\#3168](https://github.com/harness/drone/pull/3168) ([kit101](https://github.com/kit101))
+
+**Merged pull requests:**
+
+- release prep 2.7.2 [\#3172](https://github.com/harness/drone/pull/3172) ([eoinmcafee00](https://github.com/eoinmcafee00))
+
+## [v2.7.1](https://github.com/harness/drone/tree/v2.7.1) (2021-12-17)
+
+[Full Changelog](https://github.com/harness/drone/compare/v2.7.0...v2.7.1)
+
+**Fixed bugs:**
+
+- fixes issue with redirects on double slashes in url [\#3170](https://github.com/harness/drone/pull/3170) ([eoinmcafee00](https://github.com/eoinmcafee00))
+
+**Merged pull requests:**
+
+- release prep v2.7.1 [\#3171](https://github.com/harness/drone/pull/3171) ([eoinmcafee00](https://github.com/eoinmcafee00))
+
+## [v2.7.0](https://github.com/harness/drone/tree/v2.7.0) (2021-12-15)
+
+[Full Changelog](https://github.com/harness/drone/compare/v2.6.0...v2.7.0)
+
+**Implemented enhancements:**
+
+- bump UI to v2.4.1 [\#3167](https://github.com/harness/drone/pull/3167) ([d1wilko](https://github.com/d1wilko))
+
+**Fixed bugs:**
+
+- \(DRON-157\) use deploy string in deployment [\#3165](https://github.com/harness/drone/pull/3165) ([tphoney](https://github.com/tphoney))
+
+**Merged pull requests:**
+
+- release v2.7.0 [\#3166](https://github.com/harness/drone/pull/3166) ([d1wilko](https://github.com/d1wilko))
+
+## [v2.6.0](https://github.com/harness/drone/tree/v2.6.0) (2021-11-30)
+
+[Full Changelog](https://github.com/harness/drone/compare/v2.5.0...v2.6.0)
+
+**Implemented enhancements:**
+
+- Feat: implemented gitee client [\#3156](https://github.com/harness/drone/pull/3156) ([kit101](https://github.com/kit101))
+
+**Merged pull requests:**
+
+- release prep for v2.6.0 [\#3163](https://github.com/harness/drone/pull/3163) ([tphoney](https://github.com/tphoney))
+
+## [v2.5.0](https://github.com/harness/drone/tree/v2.5.0) (2021-11-17)
+
+[Full Changelog](https://github.com/harness/drone/compare/v2.4.0...v2.5.0)
+
+**Implemented enhancements:**
+
+- bump ui to v2.4.0 [\#3160](https://github.com/harness/drone/pull/3160) ([eoinmcafee00](https://github.com/eoinmcafee00))
+- add new endpoint for uploading cards [\#3159](https://github.com/harness/drone/pull/3159) ([eoinmcafee00](https://github.com/eoinmcafee00))
+- refactor create / find / delete end points for cards [\#3158](https://github.com/harness/drone/pull/3158) ([eoinmcafee00](https://github.com/eoinmcafee00))
+- bump ui to v2.3.1 [\#3155](https://github.com/harness/drone/pull/3155) ([d1wilko](https://github.com/d1wilko))
+- provide ability to create/read/store card data in drone server [\#3149](https://github.com/harness/drone/pull/3149) ([eoinmcafee00](https://github.com/eoinmcafee00))
+- \(DRON-124\) adding new status endpoint [\#3143](https://github.com/harness/drone/pull/3143) ([tphoney](https://github.com/tphoney))
+
+**Fixed bugs:**
+
+- fix a typo in readme [\#3150](https://github.com/harness/drone/pull/3150) ([nothatDinger](https://github.com/nothatDinger))
+
+**Merged pull requests:**
+
+- release prep for v2.5.0 [\#3161](https://github.com/harness/drone/pull/3161) ([eoinmcafee00](https://github.com/eoinmcafee00))
+
+## [v2.4.0](https://github.com/harness/drone/tree/v2.4.0) (2021-09-23)
+
+[Full Changelog](https://github.com/harness/drone/compare/v2.3.1...v2.4.0)
+
+**Implemented enhancements:**
+
+- bump ui version to v2.3.0 [\#3146](https://github.com/harness/drone/pull/3146) ([d1wilko](https://github.com/d1wilko))
+- verify if the application is buildable [\#3144](https://github.com/harness/drone/pull/3144) ([marko-gacesa](https://github.com/marko-gacesa))
+
+**Fixed bugs:**
+
+- fixes build issue with bitbucket cloud [\#3147](https://github.com/harness/drone/pull/3147) ([eoinmcafee00](https://github.com/eoinmcafee00))
+- Fix stepLimit param in Starlark and Template OSS code [\#3141](https://github.com/harness/drone/pull/3141) ([phil-davis](https://github.com/phil-davis))
+- fix a broken link in readme [\#3140](https://github.com/harness/drone/pull/3140) ([empire](https://github.com/empire))
+
+**Merged pull requests:**
+
+- \(maint\)-release 2.4.0 [\#3148](https://github.com/harness/drone/pull/3148) ([d1wilko](https://github.com/d1wilko))
+- Allow jsonnet imports in pipeline configuration [\#3105](https://github.com/harness/drone/pull/3105) ([hhamalai](https://github.com/hhamalai))
+
+## [v2.3.1](https://github.com/harness/drone/tree/v2.3.1) (2021-09-09)
+
+[Full Changelog](https://github.com/harness/drone/compare/v2.3.0...v2.3.1)
+
+**Implemented enhancements:**
+
+- bump ui to v2.2.1 - https://github.com/drone/drone-ui/blob/main/CHANGELOG.md [\#3138](https://github.com/harness/drone/pull/3138) ([d1wilko](https://github.com/d1wilko))
+
+**Merged pull requests:**
+
+- \(maint\)-release 2.3.1 [\#3139](https://github.com/harness/drone/pull/3139) ([d1wilko](https://github.com/d1wilko))
+
+## [v2.3.0](https://github.com/harness/drone/tree/v2.3.0) (2021-09-09)
+
+[Full Changelog](https://github.com/harness/drone/compare/v2.2.0...v2.3.0)
+
+**Implemented enhancements:**
+
+- bump ui to v2.2.0 - https://github.com/drone/drone-ui/blob/main/CHANGELOG.md [\#3137](https://github.com/harness/drone/pull/3137) ([d1wilko](https://github.com/d1wilko))
+- Make starlark step limit configurable [\#3134](https://github.com/harness/drone/pull/3134) ([phil-davis](https://github.com/phil-davis))
+- \(feat\) drone h/a: wrapped scheduler's signal func with redis mutex [\#3130](https://github.com/harness/drone/pull/3130) ([marko-gacesa](https://github.com/marko-gacesa))
+
+**Fixed bugs:**
+
+- \(fix\) trim http/s prefixes from config hostnames [\#3136](https://github.com/harness/drone/pull/3136) ([tphoney](https://github.com/tphoney))
+- \(fix\) remove unused jwt-go library [\#3129](https://github.com/harness/drone/pull/3129) ([tphoney](https://github.com/tphoney))
+
+## [v2.2.0](https://github.com/harness/drone/tree/v2.2.0) (2021-09-01)
+
+[Full Changelog](https://github.com/harness/drone/compare/v2.1.0...v2.2.0)
+
+**Implemented enhancements:**
+
+- \(maint\) ui version v2.1.0 - https://github.com/drone/drone-ui/blob/main/CHANGELOG.md [\#3132](https://github.com/harness/drone/pull/3132) ([d1wilko](https://github.com/d1wilko))
+- Ability to cancel running builds, if a new commit is pushed [\#3126](https://github.com/harness/drone/pull/3126) ([eoinmcafee00](https://github.com/eoinmcafee00))
+
+**Fixed bugs:**
+
+- fix templating reg expression to match if .drone.yml contains --- characters  [\#3131](https://github.com/harness/drone/pull/3131) ([eoinmcafee00](https://github.com/eoinmcafee00))
+- add check on template extension type - throw error if invalid [\#3128](https://github.com/harness/drone/pull/3128) ([eoinmcafee00](https://github.com/eoinmcafee00))
+
+**Merged pull requests:**
+
+- \(maint\)-release 2.2.0 [\#3133](https://github.com/harness/drone/pull/3133) ([eoinmcafee00](https://github.com/eoinmcafee00))
+- Rename files with camelCase name to use snake\_case convention [\#3127](https://github.com/harness/drone/pull/3127) ([marko-gacesa](https://github.com/marko-gacesa))
+- event-stream supports timeout [\#3125](https://github.com/harness/drone/pull/3125) ([zc2638](https://github.com/zc2638))
+- \(maint\) Readme update Add Contributor Section  [\#3111](https://github.com/harness/drone/pull/3111) ([mrsantons](https://github.com/mrsantons))
+
+## [v2.1.0](https://github.com/harness/drone/tree/v2.1.0) (2021-08-24)
+
+[Full Changelog](https://github.com/harness/drone/compare/v2.0.6...v2.1.0)
+
+**Implemented enhancements:**
+
+- \(maint\) ui version v2.0.1. - https://github.com/drone/drone-ui/blob/main/CHANGELOG.md [\#3123](https://github.com/harness/drone/pull/3123) ([d1wilko](https://github.com/d1wilko))
+- add support for yaml templates [\#3120](https://github.com/harness/drone/pull/3120) ([eoinmcafee00](https://github.com/eoinmcafee00))
+
+**Fixed bugs:**
+
+- Update error message to forbidden if user membership doesn't exist on repo [\#3122](https://github.com/harness/drone/pull/3122) ([eoinmcafee00](https://github.com/eoinmcafee00))
+- update create template path to have namespace, instead of inside the payload [\#3121](https://github.com/harness/drone/pull/3121) ([eoinmcafee00](https://github.com/eoinmcafee00))
+- update dependency drone/go-scm to 1.15.2 to fix gitea build problem [\#3118](https://github.com/harness/drone/pull/3118) ([sesky4](https://github.com/sesky4))
+
+**Merged pull requests:**
+
+- \(maint\) v2.1.0 release prep [\#3124](https://github.com/harness/drone/pull/3124) ([d1wilko](https://github.com/d1wilko))
+
+## [v2.0.6](https://github.com/harness/drone/tree/v2.0.6) (2021-08-17)
+
+[Full Changelog](https://github.com/harness/drone/compare/v2.0.5...v2.0.6)
+
+**Merged pull requests:**
+
+- \(maint\) v2.0.6 release prep [\#3119](https://github.com/harness/drone/pull/3119) ([tphoney](https://github.com/tphoney))
+
+## [v2.0.5](https://github.com/harness/drone/tree/v2.0.5) (2021-08-17)
+
+[Full Changelog](https://github.com/harness/drone/compare/v2.0.4...v2.0.5)
+
+**Implemented enhancements:**
+
+- bump ui version [\#3115](https://github.com/harness/drone/pull/3115) ([d1wilko](https://github.com/d1wilko))
+- bump ui version [\#3114](https://github.com/harness/drone/pull/3114) ([d1wilko](https://github.com/d1wilko))
+- Add support for nested data objects within templates [\#3110](https://github.com/harness/drone/pull/3110) ([eoinmcafee00](https://github.com/eoinmcafee00))
+- \(feat\) redis implementation for pub-sub, log streaming and canceller [\#3108](https://github.com/harness/drone/pull/3108) ([marko-gacesa](https://github.com/marko-gacesa))
+
+**Fixed bugs:**
+
+- fix issue where map changes order therefore test randomly fails [\#3112](https://github.com/harness/drone/pull/3112) ([eoinmcafee00](https://github.com/eoinmcafee00))
+
+**Merged pull requests:**
+
+- release 2.0.5 [\#3117](https://github.com/harness/drone/pull/3117) ([eoinmcafee00](https://github.com/eoinmcafee00))
+- Update pull\_request\_template.md [\#3107](https://github.com/harness/drone/pull/3107) ([tphoney](https://github.com/tphoney))
 
 All notable changes to this project will be documented in this file.
 

@@ -78,10 +78,12 @@ func provideConfigPlugin(client *scm.Client, contents core.FileService, conf spe
 // configuration.
 func provideConvertPlugin(client *scm.Client, fileService core.FileService, conf spec.Config, templateStore core.TemplateStore) core.ConvertService {
 	return converter.Combine(
+		conf.Convert.Multi,
 		converter.Legacy(false),
 		converter.Starlark(
 			conf.Starlark.Enabled,
 			conf.Starlark.StepLimit,
+			conf.Starlark.SizeLimit,
 		),
 		converter.Jsonnet(
 			conf.Jsonnet.Enabled,
@@ -91,6 +93,7 @@ func provideConvertPlugin(client *scm.Client, fileService core.FileService, conf
 		converter.Template(
 			templateStore,
 			conf.Starlark.StepLimit,
+			conf.Starlark.SizeLimit,
 		),
 		converter.Memoize(
 			converter.Remote(

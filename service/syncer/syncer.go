@@ -16,6 +16,7 @@ package syncer
 
 import (
 	"context"
+	"runtime/debug"
 	"strings"
 	"time"
 
@@ -66,7 +67,7 @@ func (s *Synchronizer) Sync(ctx context.Context, user *core.User) (*core.Batch, 
 		// a panic that should absolutely never happen.
 		if err := recover(); err != nil {
 			logger = logger.WithField("error", err)
-			logger.Errorln("syncer: unexpected panic")
+			logger.Errorf("syncer: unexpected panic\n%s\n", debug.Stack())
 		}
 
 		// when the synchronization process is complete
@@ -109,6 +110,13 @@ func (s *Synchronizer) Sync(ctx context.Context, user *core.User) (*core.Batch, 
 						WithField("name", repo.Name).
 						WithField("uid", repo.UID).
 						Traceln("syncer: skipping subrepositories")
+				}
+			} else if repo.Archived {
+				if logrus.GetLevel() == logrus.TraceLevel {
+					logger.WithField("namespace", repo.Namespace).
+						WithField("name", repo.Name).
+						WithField("uid", repo.UID).
+						Traceln("syncer: skipping archived repositories")
 				}
 			} else if s.match(repo) {
 				remote[repo.UID] = repo

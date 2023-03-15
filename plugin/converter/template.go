@@ -23,7 +23,6 @@ import (
 	"errors"
 	"path/filepath"
 	"regexp"
-	"strings"
 	templating "text/template"
 
 	"github.com/drone/drone/core"
@@ -42,21 +41,25 @@ var (
 	errTemplateExtensionInvalid = errors.New("template extension invalid. must be yaml, starlark or jsonnet")
 )
 
-func Template(templateStore core.TemplateStore, stepLimit uint64) core.ConvertService {
+func Template(templateStore core.TemplateStore, stepLimit uint64, sizeLimit uint64) core.ConvertService {
 	return &templatePlugin{
 		templateStore: templateStore,
 		stepLimit: stepLimit,
+		sizeLimit: sizeLimit,
 	}
 }
 
 type templatePlugin struct {
 	templateStore core.TemplateStore
 	stepLimit uint64
+	sizeLimit uint64
 }
 
 func (p *templatePlugin) Convert(ctx context.Context, req *core.ConvertArgs) (*core.Config, error) {
 	// check type is yaml
-	if strings.HasSuffix(req.Repo.Config, ".yml") == false {
+	configExt := filepath.Ext(req.Repo.Config)
+
+	if configExt != ".yml" && configExt != ".yaml" {
 		return nil, nil
 	}
 
@@ -83,7 +86,7 @@ func (p *templatePlugin) Convert(ctx context.Context, req *core.ConvertArgs) (*c
 	case ".yml", ".yaml":
 		return parseYaml(req, template, templateArgs)
 	case ".star", ".starlark", ".script":
-		return parseStarlark(req, template, templateArgs, p.stepLimit)
+		return parseStarlark(req, template, templateArgs, p.stepLimit, p.sizeLimit)
 	case ".jsonnet":
 		return parseJsonnet(req, template, templateArgs)
 	default:
@@ -121,8 +124,8 @@ func parseJsonnet(req *core.ConvertArgs, template *core.Template, templateArgs c
 	}, nil
 }
 
-func parseStarlark(req *core.ConvertArgs, template *core.Template, templateArgs core.TemplateArgs, stepLimit uint64) (*core.Config, error) {
-	file, err := starlark.Parse(req, template, templateArgs.Data, stepLimit)
+func parseStarlark(req *core.ConvertArgs, template *core.Template, templateArgs core.TemplateArgs, stepLimit uint64, sizeLimit uint64) (*core.Config, error) {
+	file, err := starlark.Parse(req, template, templateArgs.Data, stepLimit, sizeLimit)
 	if err != nil {
 		return nil, err
 	}

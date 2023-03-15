@@ -19,6 +19,7 @@ import (
 	"github.com/drone/go-login/login"
 	"github.com/drone/go-login/login/bitbucket"
 	"github.com/drone/go-login/login/gitea"
+	"github.com/drone/go-login/login/gitee"
 	"github.com/drone/go-login/login/github"
 	"github.com/drone/go-login/login/gitlab"
 	"github.com/drone/go-login/login/gogs"
@@ -44,6 +45,8 @@ func provideLogin(config config.Config) login.Middleware {
 		return provideBitbucketLogin(config)
 	case config.Github.ClientID != "":
 		return provideGithubLogin(config)
+	case config.Gitee.ClientID != "":
+		return provideGiteeLogin(config)
 	case config.Gitea.Server != "":
 		return provideGiteaLogin(config)
 	case config.GitLab.ClientID != "":
@@ -87,13 +90,33 @@ func provideGithubLogin(config config.Config) login.Middleware {
 	}
 }
 
+// provideGiteeLogin is a Wire provider function that returns
+// a Gitee authenticator based on the environment configuration.
+func provideGiteeLogin(config config.Config) login.Middleware {
+	if config.Gitee.ClientID == "" {
+		return nil
+	}
+	redirectURL := config.Gitee.RedirectURL
+	if redirectURL == "" {
+		redirectURL = config.Server.Addr + "/login"
+	}
+	return &gitee.Config{
+		ClientID:     config.Gitee.ClientID,
+		ClientSecret: config.Gitee.ClientSecret,
+		RedirectURL:  redirectURL,
+		Server:       config.Gitee.Server,
+		Scope:        config.Gitee.Scope,
+		Client:       defaultClient(config.Gitee.SkipVerify),
+	}
+}
+
 // provideGiteaLogin is a Wire provider function that returns
 // a Gitea authenticator based on the environment configuration.
 func provideGiteaLogin(config config.Config) login.Middleware {
 	if config.Gitea.Server == "" {
 		return nil
 	}
-	return &gitea.Config {
+	return &gitea.Config{
 		ClientID:     config.Gitea.ClientID,
 		ClientSecret: config.Gitea.ClientSecret,
 		Server:       config.Gitea.Server,
@@ -174,6 +197,23 @@ func provideRefresher(config config.Config) *oauth2.Refresher {
 			Source:       oauth2.ContextTokenSource(),
 			Client:       defaultClient(config.Gitea.SkipVerify),
 		}
+	case config.GitLab.ClientID != "":
+		return &oauth2.Refresher{
+			ClientID:     config.GitLab.ClientID,
+			ClientSecret: config.GitLab.ClientSecret,
+			Endpoint:     strings.TrimSuffix(config.GitLab.Server, "/") + "/oauth/token",
+			Source:       oauth2.ContextTokenSource(),
+			Client:       defaultClient(config.GitLab.SkipVerify),
+		}
+	case config.Gitee.ClientID != "":
+		return &oauth2.Refresher{
+			ClientID:     config.Gitee.ClientID,
+			ClientSecret: config.Gitee.ClientSecret,
+			Endpoint:     strings.TrimSuffix(config.Gitee.Server, "/") + "/oauth/token",
+			Source:       oauth2.ContextTokenSource(),
+			Client:       defaultClient(config.Gitee.SkipVerify),
+		}
+
 	}
 	return nil
 }

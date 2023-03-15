@@ -161,6 +161,10 @@ var migrations = []struct {
 		stmt: createTableTemplate,
 	},
 	{
+		name: "create-index-template-namespace",
+		stmt: createIndexTemplateNamespace,
+	},
+	{
 		name: "alter-table-steps-add-column-step-depends-on",
 		stmt: alterTableStepsAddColumnStepDependsOn,
 	},
@@ -692,14 +696,16 @@ CREATE INDEX IF NOT EXISTS ix_latest_repo ON latest (latest_repo_id);
 var createTableTemplate = `
 CREATE TABLE IF NOT EXISTS templates (
     template_id       SERIAL PRIMARY KEY
-    ,template_name    TEXT UNIQUE
+    ,template_name    TEXT
     ,template_namespace VARCHAR(50)
     ,template_data    BYTEA
     ,template_created INTEGER
     ,template_updated INTEGER
 ,UNIQUE(template_name, template_namespace)
 );
+`
 
+var createIndexTemplateNamespace = `
 CREATE INDEX IF NOT EXISTS ix_template_namespace ON templates (template_namespace);
 `
 

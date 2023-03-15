@@ -28,6 +28,7 @@ import (
 	"github.com/drone/go-scm/scm"
 	"github.com/drone/go-scm/scm/driver/bitbucket"
 	"github.com/drone/go-scm/scm/driver/gitea"
+	"github.com/drone/go-scm/scm/driver/gitee"
 	"github.com/drone/go-scm/scm/driver/github"
 	"github.com/drone/go-scm/scm/driver/gitlab"
 	"github.com/drone/go-scm/scm/driver/gogs"
@@ -53,6 +54,8 @@ func provideClient(config config.Config) *scm.Client {
 		return provideBitbucketClient(config)
 	case config.Github.ClientID != "":
 		return provideGithubClient(config)
+	case config.Gitee.ClientID != "":
+		return provideGiteeClient(config)
 	case config.Gitea.Server != "":
 		return provideGiteaClient(config)
 	case config.GitLab.ClientID != "":
@@ -107,6 +110,32 @@ func provideGithubClient(config config.Config) *scm.Client {
 	return client
 }
 
+// provideGiteeClient is a Wire provider function that returns
+// a Gitee client based on the environment configuration.
+func provideGiteeClient(config config.Config) *scm.Client {
+	client, err := gitee.New(config.Gitee.APIServer)
+	if err != nil {
+		logrus.WithError(err).
+			Fatalln("main: cannot create the Gitee client")
+	}
+	if config.Gitee.Debug {
+		client.DumpResponse = httputil.DumpResponse
+	}
+	client.Client = &http.Client{
+		Transport: &oauth2.Transport{
+			Scheme: oauth2.SchemeBearer,
+			Source: &oauth2.Refresher{
+				ClientID:     config.Gitee.ClientID,
+				ClientSecret: config.Gitee.ClientSecret,
+				Endpoint:     strings.TrimSuffix(config.Gitee.Server, "/") + "/oauth/token",
+				Source:       oauth2.ContextTokenSource(),
+			},
+			Base: defaultTransport(config.Gitee.SkipVerify),
+		},
+	}
+	return client
+}
+
 // provideGiteaClient is a Wire provider function that returns
 // a Gitea client based on the environment configuration.
 func provideGiteaClient(config config.Config) *scm.Client {
@@ -151,7 +180,13 @@ func provideGitlabClient(config config.Config) *scm.Client {
 	}
 	client.Client = &http.Client{
 		Transport: &oauth2.Transport{
-			Source: oauth2.ContextTokenSource(),
+			Scheme: oauth2.SchemeBearer,
+			Source: &oauth2.Refresher{
+				ClientID:     config.GitLab.ClientID,
+				ClientSecret: config.GitLab.ClientSecret,
+				Endpoint:     strings.TrimSuffix(config.GitLab.Server, "/") + "/oauth/token",
+				Source:       oauth2.ContextTokenSource(),
+			},
 			Base:   defaultTransport(config.GitLab.SkipVerify),
 		},
 	}
